@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Marketing by Merlin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        /* ==========================================================================
+           1. GLOBAL PALETTE VARIABLES & RESETS
+           ========================================================================== */
+        :root {
+            --light-canvas: #fffaf2;    
+            --dark-canvas: #193709;     
+            --star-accent: #ffc759;     
+            --focal-point: #880b0b;     
+            --grounding-tone: #d3a247;  
+            --text-dark: #2b2b2b;       
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box !important;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden; 
+            background-color: var(--light-canvas);
+            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION BAR
+           ========================================================================== */
+        .navbar {
+            background-color: var(--light-canvas);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(136, 11, 11, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand img {
+            height: auto;
+            width: 200px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--focal-point);
+        }
+
+        /* ==========================================================================
+           3. CONTACT PAGE HERO BANNER
+           ========================================================================== */
+        .contact-header {
+            width: 100%;
+            background-color: var(--light-canvas); 
+            padding: 60px 0 20px 0;                
+            text-align: center;
+            display: block;
+            padding-bottom: 25px; 
+            border-bottom: 1px dashed var(--grounding-tone); 
+        }
+
+        .header-content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-text-img {
+            max-width: 800px;  
+            width: 100%;       
+            height: auto;      
+            display: block;
+        }
+
+        /* ==========================================================================
+           4. SPLIT TWO-COLUMN CONTACT GRID
+           ========================================================================== */
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info-col h2 {
+            font-size: 2.5rem;
+            color: var(--grounding-tone); 
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact-info-col p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            max-width: 450px;
+        }
+
+        .direct-details {
+            margin-top: 35px;
+            font-size: 1.05rem;
+        }
+
+        .detail-item {
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .detail-item strong {
+            color: var(--dark-canvas);
+        }
+
+        .detail-item a {
+            color: var(--focal-point);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .detail-item a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form-col {
+            background-color: #ffffff;
+            border: 2px solid var(--dark-canvas);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 6px 6px 0px var(--star-accent); 
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark-canvas);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: var(--light-canvas);
+            color: var(--text-dark);
+            font-family: inherit;
+            transition: border-color 0.2s ease, outline 0.2s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--focal-point);
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--focal-point); 
+            color: #ffffff;
+            border: 2px solid var(--focal-point);
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--star-accent);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--star-accent);
+            background-color: var(--light-canvas);
+            color: var(--focal-point);
+        }
+
+        /* ==========================================================================
+           5. GLOBAL BRAND FOOTER
+           ========================================================================== */
+        .site-footer {
+            background-color: var(--dark-canvas);
+            color: #fcf8f2;
+            border-top: 4px solid var(--star-accent);
+            padding: 50px 0; 
+            text-align: center;
+            display: block;
+            width: 100%;
+            clear: both;
+        }
+
+        .footer-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo-link {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .footer-logo-link:hover {
+            transform: scale(1.03); 
+        }
+
+        .footer-img {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .footer-tagline {
+            font-size: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        .footer-cta-button {
+            display: inline-block;
+            background-color: var(--star-accent);
+            color: var(--dark-canvas);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 12px 30px;
+            border-radius: 6px;
+            margin: 10px 0 15px 0;
+            border: 2px solid var(--star-accent);
+            box-shadow: 4px 4px 0px var(--focal-point); 
+            transition: all 0.2s ease;
+        }
+
+        .footer-cta-button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--focal-point);
+            background-color: #fffaf2;
+            border-color: #fffaf2;
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 10px 0;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: #fcf8f2;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--star-accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 10px;
+            border-top: 1px solid rgba(252, 248, 242, 0.1);
+            padding-top: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* ==========================================================================
+           6. RESPONSIVE DEVICES SCALING
+           ========================================================================== */
+        @media (max-width: 850px) {
+            .nav-container {
+                flex-direction: column !important; 
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-brand img {
+                width: 160px !important;
+            }
+
+            .nav-links {
+                gap: 20px !important;
+                justify-content: center;
+                padding: 0;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+                padding: 5px 2px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr; 
+                gap: 40px;
+            }
+            .contact-info-col h2 { font-size: 2rem; }
+            .contact-form-col { padding: 25px; }
+            
+            .contact-header {
+                padding: 40px 0 10px 0;
+            }
+
+            .contact-header .header-text-img {
+                max-width: 200px;       
+            }
+
+            .container, .footer-container {
+                padding: 0 30px !important; 
+                box-sizing: border-box;
+            }
+
+            .footer-links {
+                flex-wrap: wrap !important; 
+                justify-content: center !important;
+                gap: 15px 25px !important; 
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
+                display: inline-block;
+            }
+
+            .footer-copyright {
+                width: 100%;
+                max-width: 280px; 
+                margin: 15px auto 0 auto;
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="Logo"> 
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="contact-header">
+        <div class="container header-content-container">
+            <img src="contact-text.png" alt="Contact Title" class="header-text-img">
+        </div>
+    </header>
+
+    <section class="contact-section">
+        <div class="container contact-grid">
+            
+            <div class="contact-info-col">
+                <h2>Find your stride</h2>
+                <p>Contact me via email or phone, or leave a message in the form to the right. I'm always looking forward to connecting on new digital marketing strategies, market research campaigns, or strategic opportunities.</p>
+                
+                <div class="direct-details">
+                    <p class="detail-item"><strong>Phone:</strong> (330) 441-9384</p>
+                    <p class="detail-item"><strong>Email:</strong> <a href="mailto:merlinfarnham@outlook.com">merlinfarnham@outlook.com</a></p>
+                </div>
+            </div>
+
+            <div class="contact-form-col">
+                <form name="portfolio-contact" method="POST" netlify>
+                    
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your answer">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="Your answer">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Your answer"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <a href="index.html" class="footer-logo-link">
+                <img src="logo.png" alt="Marketing by Merlin Logo" class="footer-img">
+            </a>
+            <p class="footer-tagline">Find your stride.</p>
+            <a href="contact.html" class="footer-cta-button">Connect with me today</a>
+            <ul class="footer-links">
+                <li><a href="https://linkedin.com/in/merlinrfarnham" target="_blank">LinkedIn</a></li>
+                <li><a href="index.html" target="_self">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Back to Top</a></li>
+            </ul>
+            <div class="footer-copyright">
+                &copy; 2026 Merlin Farnham. Built from scratch. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

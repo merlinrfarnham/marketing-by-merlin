@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Marketing by Merlin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        /* ==========================================================================
+           1. GLOBAL PALETTE VARIABLES & RESETS
+           ========================================================================== */
+        :root {
+            --light-canvas: #fffaf2;    
+            --dark-canvas: #193709;     
+            --star-accent: #ffc759;     
+            --focal-point: #880b0b;     
+            --grounding-tone: #d3a247;  
+            --text-dark: #2b2b2b;       
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box !important;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden; 
+            background-color: var(--light-canvas);
+            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION BAR
+           ========================================================================== */
+        .navbar {
+            background-color: var(--light-canvas);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(136, 11, 11, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand img {
+            height: auto;
+            width: 200px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--focal-point);
+        }
+
+        /* ==========================================================================
+           3. PORTFOLIO PAGE HERO BANNER
+           ========================================================================== */
+        .portfolio-header {
+            width: 100%;
+            background-color: var(--light-canvas); 
+            padding: 60px 0 20px 0;                
+            text-align: center;
+            display: block;
+            padding-bottom: 25px; 
+            border-bottom: 4px solid var(--star-accent); 
+        }
+
+        .header-content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-text-img {
+            max-width: 800px;  
+            width: 100%;       
+            height: auto;      
+            display: block;
+        }
+
+        .context-bar {
+            background-color: var(--dark-canvas);
+            color: #fcf8f2;
+            padding: 20px 25px;
+            text-align: center;
+            font-size: 1.05rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================================================
+           4. MOSAIC (MASONRY) GALLERY LAYOUT
+           ========================================================================== */
+        .gallery-section {
+            padding: 60px 0 80px 0;
+        }
+
+        .gallery-grid {
+            column-count: 2;      
+            column-gap: 30px;     
+            width: 100%;
+        }
+
+        .project-card {
+            background-color: #ffffff;
+            border: 2px solid var(--dark-canvas);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 6px 6px 0px var(--star-accent);
+            display: inline-block; 
+            width: 100%;           
+            margin-bottom: 30px;   
+            break-inside: avoid;   
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px var(--focal-point);
+        }
+
+        .portfolio-media-wrapper {
+            width: 100%;
+            background-color: #ffffff;
+            border-bottom: 2px solid var(--dark-canvas);
+            overflow: hidden;
+            display: block;
+        }
+
+        .ratio-letter {
+            aspect-ratio: 8.5 / 11; 
+        }
+
+        .ratio-widescreen {
+            aspect-ratio: 16 / 9; 
+        }
+
+        img.portfolio-media-src {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            background-color: #ffffff;
+            display: block;
+        }
+
+        embed.portfolio-media-src {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .card-details {
+            padding: 15px; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: flex-start; 
+            background-color: #ffffff;
+        }
+
+        .card-details h2 {
+            font-size: 1.15rem; 
+            color: var(--focal-point);
+            margin-bottom: 4px; 
+            line-height: 1.3;
+        }
+
+        .card-details p {
+            font-size: 0.88rem; 
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* ==========================================================================
+           5. INTERMEDIATE FOOTER REDIRECT PROMPT
+           ========================================================================== */
+        .prompt-section {
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px dashed var(--grounding-tone);
+            background-color: var(--light-canvas);
+        }
+
+        .prompt-section p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-canvas);
+            margin-bottom: 20px;
+        }
+
+        .about-btn {
+            display: inline-block;
+            background-color: var(--focal-point);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 12px 35px;
+            border-radius: 6px;
+            border: 2px solid var(--focal-point);
+            box-shadow: 4px 4px 0px var(--star-accent);
+            transition: all 0.2s ease;
+        }
+
+        .about-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--star-accent);
+            background-color: var(--light-canvas);
+            color: var(--focal-point);
+        }
+
+        /* ==========================================================================
+           6. GLOBAL MASTER FOOTER
+           ========================================================================== */
+        .site-footer {
+            background-color: var(--dark-canvas);
+            color: #fcf8f2;
+            border-top: 4px solid var(--star-accent);
+            padding: 50px 0; 
+            text-align: center;
+            display: block;
+            width: 100%;
+            clear: both;
+        }
+
+        .footer-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo-link {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .footer-logo-link:hover {
+            transform: scale(1.03); 
+        }
+
+        .footer-img {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .footer-tagline {
+            font-size: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        .footer-cta-button {
+            display: inline-block;
+            background-color: var(--star-accent);
+            color: var(--dark-canvas);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 12px 30px;
+            border-radius: 6px;
+            margin: 10px 0 15px 0;
+            border: 2px solid var(--star-accent);
+            box-shadow: 4px 4px 0px var(--focal-point); 
+            transition: all 0.2s ease;
+        }
+
+        .footer-cta-button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--focal-point);
+            background-color: #fffaf2;
+            border-color: #fffaf2;
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 10px 0;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: #fcf8f2;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--star-accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 10px;
+            border-top: 1px solid rgba(252, 248, 242, 0.1);
+            padding-top: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* ==========================================================================
+           7. Mobile RESPONSIVENESS PATCH
+           ========================================================================== */
+        @media (max-width: 800px) {
+            .nav-container {
+                flex-direction: column !important; 
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-brand img {
+                width: 160px !important;
+            }
+
+            .nav-links {
+                gap: 20px !important;
+                justify-content: center;
+                padding: 0;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+                padding: 5px 2px;
+            }
+
+            .gallery-grid {
+                column-count: 1; 
+                column-gap: 0;
+            }
+            
+            .portfolio-header {
+                padding: 40px 0 10px 0;
+            }
+            
+            .header-text-img {
+                max-width: 200px;       
+            }
+
+            .container, .footer-container {
+                padding: 0 30px !important; 
+                box-sizing: border-box;
+            }
+
+            .footer-links {
+                flex-wrap: wrap !important; 
+                justify-content: center !important;
+                gap: 15px 25px !important; 
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
+                display: inline-block;
+            }
+
+            .footer-copyright {
+                width: 100%;
+                max-width: 280px; 
+                margin: 15px auto 0 auto;
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="Logo"> 
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="portfolio-header">
+        <div class="container header-content-container">
+            <img src="portfolio-text.png" alt="Portfolio Title" class="header-text-img">
+        </div>
+    </header>
+
+    <div class="context-bar">
+        Check out my marketing portfolio – featuring a mix of work done in class and for my fraternity, ranging from event flyers made in Canva to a fully planned integrated marketing communications campaign.
+    </div>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                
+                <div class="project-card">
+                    <div class="portfolio-media-wrapper">
+                        <img src="marketing-consultant-profile.png" alt="Marketing consultant profile class assignment" class="portfolio-media-src">
+                    </div>
+                    <div class="card-details">
+                        <h2>Marketing Consultant Profile</h2>
+                        <p>Consultant profile made with Canva for my integrated marketing communications course. This assignment allowed us to professionally introduce ourselves to our client for the semester.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="portfolio-media-wrapper">
+                        <img src="dinner-flyer.jpg" alt="2025 Dinner Flyer Preview" class="portfolio-media-src">
+                    </div>
+                    <div class="card-details">
+                        <h2>2025 Not For College Days Alone Dinner</h2>
+                        <p>Event branding and communications collateral designed for my fraternity, Phi Gamma Delta.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="portfolio-media-wrapper ratio-letter">
+                        <embed src="imc-campaign-planbook.pdf" type="application/pdf" class="portfolio-media-src"></embed>
+                    </div>
+                    <div class="card-details">
+                        <h2>Because of B.R.A.Y.D.E.N. IMC Planbook</h2>
+                        <p>A holistic integrated marketing communications strategy plan book co-developed over the course of a semester for a registered 501(c)(3) non-profit organization. Includes SWOT analysis, unique customer personas, and applies the StoryBrand Framework to uplift brand messaging.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="portfolio-media-wrapper ratio-widescreen">
+                        <embed src="brayden-imc-presentation.pdf" type="application/pdf" class="portfolio-media-src"></embed>
+                    </div>
+                    <div class="card-details">
+                        <h2>Because of B.R.A.Y.D.E.N. IMC Campaign Presentation</h2>
+                        <p>A customized marketing campaign proposal based on the planbook developed for Because of B.R.A.Y.D.E.N.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="portfolio-media-wrapper">
+                        <img src="puppy-party-flyer.jpg" alt="Puppy Party Flyer Preview" class="portfolio-media-src">
+                    </div>
+                    <div class="card-details">
+                        <h2>Puppy Party Flyer</h2>
+                        <p>Puppy Party advertisement for Phi Gamma Delta. Designed on Canva, made for Instagram. An additional flyer for crossposting and physical handouts was made in a similar fashion.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="portfolio-media-wrapper ratio-widescreen">
+                        <embed src="brembo-b2b-presentation.pdf" type="application/pdf" class="portfolio-media-src"></embed>
+                    </div>
+                    <div class="card-details">
+                        <h2>Brembo Brake Assembly B2B Analysis</h2>
+                        <p>Presentation focused on Brembo's B2B initiatives as it relates to their brake assembly. Includes an overview of the company, an analysis of their main communication channels and unique value propositions, and customer personas tailored to the brand.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="portfolio-media-wrapper ratio-widescreen">
+                        <embed src="uapd-research.pdf" type="application/pdf" class="portfolio-media-src"></embed>
+                    </div>
+                    <div class="card-details">
+                        <h2>UAPD Market Research Initiative</h2>
+                        <p>Primary consumer research project leveraging research methods such as focus groups and eye-tracking to establish qualitative metrics and make informed recommendations to the client. As a class, our research has resulted in actual change at the University of Akron and its police force.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="portfolio-media-wrapper ratio-letter">
+                        <embed src="fraternity-newsletter.pdf" type="application/pdf" class="portfolio-media-src"></embed>
+                    </div>
+                    <div class="card-details">
+                        <h2>The Alpha Omichronichle</h2>
+                        <p>An example of my version of the local chapter newsletter for Phi Gamma Delta. Designed, written, and edited by me.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="prompt-section">
+        <div class="container">
+            <p>Click below to find out more about me!</p>
+            <a href="about.html" class="about-btn">About</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <a href="index.html" class="footer-logo-link">
+                <img src="logo.png" alt="Marketing by Merlin Logo" class="footer-img">
+            </a>
+            <p class="footer-tagline">Find your stride.</p>
+            <a href="contact.html" class="footer-cta-button">Connect with me today</a>
+            <ul class="footer-links">
+                <li><a href="https://linkedin.com/in/merlinrfarnham" target="_blank">LinkedIn</a></li>
+                <li><a href="index.html" target="_self">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Back to Top</a></li>
+            </ul>
+            <div class="footer-copyright">
+                &copy; 2026 Merlin Farnham. Built from scratch. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

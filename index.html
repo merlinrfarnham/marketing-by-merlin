@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Marketing by Merlin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        /* ==========================================================================
+           1. GLOBAL PALETTE VARIABLES & RESETS
+           ========================================================================== */
+        :root {
+            --light-canvas: #fffaf2;    
+            --dark-canvas: #193709;     
+            --star-accent: #ffc759;     
+            --focal-point: #880b0b;     
+            --grounding-tone: #d3a247;  
+            --text-dark: #2b2b2b;       
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box !important;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden; 
+            background-color: var(--light-canvas);
+            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* The master structural container - set strictly to desktop style here */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px; 
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION BAR 
+           ========================================================================== */
+        .navbar {
+            background-color: var(--light-canvas);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(136, 11, 11, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand img {
+            height: auto;
+            width: 200px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--focal-point);
+        }
+
+        /* ==========================================================================
+           3. SPLIT HERO INTRODUCTION GRID
+           ========================================================================== */
+        .hero-section {
+            padding: 60px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr; 
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            color: var(--focal-point);
+            font-size: 3rem;
+            margin-bottom: 5px;
+        }
+
+        .hero-text .subtitle {
+            color: var(--grounding-tone);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 8px 8px 0px var(--dark-canvas); 
+            border: 2px solid var(--dark-canvas);
+        }
+
+        /* ==========================================================================
+           4. TWO-COLUMN BALANCED STORY CONTENT
+           ========================================================================== */
+        .content-section {
+            padding: 40px 0 80px 0;
+            background-color: var(--light-canvas);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 50px;
+        }
+
+        .content-column h2 {
+            color: var(--dark-canvas);
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--star-accent); 
+        }
+
+        .content-column p {
+            font-size: 1.05rem;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .metrics-inline {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .metric-mini-card {
+            background: #ffffff;
+            border: 2px solid var(--focal-point);
+            padding: 15px;
+            border-radius: 6px;
+            flex: 1;
+            text-align: center;
+            box-shadow: 4px 4px 0px var(--star-accent);
+        }
+
+        .metric-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--focal-point);
+            margin: 0;
+        }
+
+        .metric-lbl {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--dark-canvas);
+            text-transform: uppercase;
+        }
+
+        /* ==========================================================================
+           5. WORK SAMPLES SECTION (PDF SHOWCASE)
+           ========================================================================== */
+        .work-samples-section {
+            padding: 60px 0 80px 0;
+            background-color: var(--light-canvas);
+            border-top: 1px dashed var(--grounding-tone);
+        }
+       
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-header h2 {
+            color: var(--dark-canvas); 
+            font-size: 2.2rem;
+            display: inline-block;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--star-accent); 
+            padding-top: 10px;
+            border-top: 3px solid var(--star-accent); 
+        }
+
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px;
+        }
+
+        .pdf-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdf-viewer-frame {
+            aspect-ratio: 8.5 / 11; 
+            border: 2px solid var(--dark-canvas);
+            border-radius: 6px;
+            box-shadow: 6px 6px 0px var(--focal-point); 
+            background-color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .pdf-description {
+            padding: 5px 10px;
+        }
+
+        .pdf-description h3 {
+            color: var(--focal-point); 
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .pdf-description p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* ==========================================================================
+           6. GOLDEN ERA FOOTER DESIGN
+           ========================================================================== */
+       .site-footer {
+            background-color: var(--dark-canvas);
+            color: #fcf8f2;
+            border-top: 4px solid var(--star-accent);
+            padding: 50px 0; 
+            text-align: center;
+            display: block;
+            width: 100%;
+            clear: both;
+        }
+
+        .footer-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo-link {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .footer-logo-link:hover {
+            transform: scale(1.03); 
+        }
+
+        .footer-img {
+            max-width: 200px;   
+            width: 100%;        
+            height: auto;       
+            display: block;
+        }
+
+        .footer-tagline {
+            font-size: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        .footer-cta-button {
+            display: inline-block;
+            background-color: var(--star-accent); 
+            color: var(--dark-canvas);            
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 12px 30px;
+            border-radius: 6px;
+            margin: 10px 0 15px 0;
+            border: 2px solid var(--star-accent);
+            box-shadow: 4px 4px 0px var(--focal-point); 
+            transition: all 0.2s ease;
+        }
+
+        .footer-cta-button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--focal-point);
+            background-color: #fffaf2; 
+            border-color: #fffaf2;
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 10px 0;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: #fcf8f2;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--star-accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 10px;
+            border-top: 1px solid rgba(252, 248, 242, 0.1);
+            padding-top: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* ==========================================================================
+           7. RESPONSIVE LAYOUT CONSTRAINTS FOR MOBILE DEVICES (STRICT CONTROL)
+           ========================================================================== */
+        @media (max-width: 850px) {
+            .nav-container {
+                flex-direction: column !important; 
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-brand img {
+                width: 160px !important;
+            }
+
+            .nav-links {
+                gap: 20px !important;
+                justify-content: center;
+                padding: 0;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+                padding: 5px 2px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+            .hero-text h1 { font-size: 2.3rem; }
+            .hero-image-wrapper img { max-width: 280px; }
+            
+            .pdf-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .pdf-viewer-frame {
+                height: 380px; 
+            }
+
+            /* Deep padding guidelines ONLY loaded on phone widths */
+            .container, .footer-container {
+                padding: 0 30px !important; 
+                box-sizing: border-box;
+            }
+
+            .footer-links {
+                flex-wrap: wrap !important; 
+                justify-content: center !important;
+                gap: 15px 25px !important; 
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
+                display: inline-block;
+            }
+
+            .footer-copyright {
+                width: 100%;
+                max-width: 280px; 
+                margin: 15px auto 0 auto;
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-brand">
+                <img src="logo.png" alt="Logo"> 
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container hero-grid">
+            
+            <div class="hero-text">
+                <h1>Merlin R Farnham</h1>
+                <div class="subtitle">- Digital Marketer - Brand Builder - Storyteller -</div>
+                <p>Hi, I’m Merlin! I’m a senior marketing student at the University of Akron, specializing in market research and digital strategy. I turn research and raw data into comprehensive, holistic marketing campaigns that elevate brand recognition and build genuine customer connections.</p>  
+                <p>My marketing journey began when I was appointed Publications Chairman in my fraternity. Through trial and error, I learned how to properly manage social media, event marketing, and PR communications with the help of my brothers and the publications committee I chaired. Three years later, I have found my stride within the digital marketing space. I hope to leverage my unique experiences and knowledge to help companies do the same.</p>
+            </div>
+            
+            <div class="hero-image-wrapper">
+                <img src="profile.jpg" alt="Merlin Profile Headshot">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="work-samples-section">
+        <div class="container">
+            
+            <div class="section-header">
+                <h2>Featured Work Samples</h2>
+            </div>
+
+            <div class="pdf-grid">
+                
+                <div class="pdf-card">
+                    <embed src="fraternity-newsletter.pdf" type="application/pdf" class="pdf-viewer-frame">
+                    
+                    <div class="pdf-description">
+                        <h3>The Alpha Omichronicle Newsletter</h3>
+                        <p>Fraternity chapter newsletter designed and edited by me. The layout and design have been recognized by the international fraternity of Phi Gamma Delta, and the publication is used as a template for other chapters across North America.</p>
+                    </div>
+                </div>
+
+                <div class="pdf-card">
+                    <embed src="imc-campaign-planbook.pdf" type="application/pdf" class="pdf-viewer-frame">
+                    
+                    <div class="pdf-description">
+                        <h3>Because of B.R.A.Y.D.E.N. IMC Campaign</h3>
+                        <p>Integrated marketing communications analysis and strategy plan book. This document contains a full IMC campaign that my group and I developed over the course of a semester for Because of B.R.A.Y.D.E.N., a 501(c)(3) based in South Carolina.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+   
+    <footer class="site-footer">
+        <div class="container footer-container">
+            
+            <a href="#" class="footer-logo-link">
+                <img src="logo.png" alt="Marketing by Merlin Logo" class="footer-img">
+            </a>
+            
+            <p class="footer-tagline">Find your stride.</p>
+            
+            <a href="contact.html" class="footer-cta-button">Connect with me today</a>
+
+            <ul class="footer-links">
+                <li><a href="https://linkedin.com/in/merlinrfarnham" target="_blank">LinkedIn</a></li>
+                <li><a href="index.html" target="_self">Home</a></li>
+                <li><a href="about.html" target="_self">About</a></li>
+                <li><a href="portfolio.html" target="_self">Portfolio</a></li>
+                <li><a href="contact.html" target="_self">Contact</a></li>
+                <li><a href="#">Back to Top</a></li>
+            </ul>
+            
+            <div class="footer-copyright">
+                &copy; 2026 Merlin Farnham. Built from scratch. All Rights Reserved.
+            </div>
+
+        </div>
+    </footer>
+</body>
+</html>
