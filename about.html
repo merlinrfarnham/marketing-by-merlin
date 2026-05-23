@@ -109,83 +109,114 @@
         /* ==========================================================================
            4. ABOUT ME INTRODUCTION BLOCK
            ========================================================================== */
-        .about-intro-section {
-            padding: 20px 0 60px 0;
-        }
+           /* ==========================================================================
+   4. ABOUT ME INTRODUCTION BLOCK
+   ========================================================================== */
+    .about-intro-section {
+        padding: 40px 20px 60px 20px; /* Added minor horizontal padding for extra safety */
+        display: flex;
+        align-items: flex-start;    /* Centers the logos near the top level of your main content */
+        justify-content: center;
+        gap: 40px;                  /* Generous space between your bio and the crests */
+    }
 
-        .about-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .about-container {
+        max-width: 750px;           /* Pulled down slightly from 800px to perfectly balance the 3-column view */
+        margin: 0;                  /* Flexbox parent handles alignment now */
+        flex: 1;                    /* Allows your bio block to command the middle real estate dynamically */
+    }
 
-        .about-container h2 {
-            color: var(--dark-canvas);
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
+    /* New side image wrapper layout */
+    .about-side-crest {
+        flex: 0 0 100px;            /* Locks the crest columns to a clean, elegant layout size */
+        margin-top: 15px;           /* Drops the logos down subtly to look balanced with the 'About Me' headline */
+        display: flex;
+        justify-content: center;
+    }
 
-        .about-container h3 {
-            color: var(--grounding-tone);
-            font-size: 1.3rem;
-            margin: 30px 0 10px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    /* Fluid design scaling for the actual image graphics */
+    .about-side-crest img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        opacity: 0.85;              /* Soft blends the artwork into your --light-canvas background */
+        transition: opacity 0.3s ease;
+    }
 
-        .about-container p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
+    .about-side-crest img:hover {
+        opacity: 1;                 /* Quick interactive pop if a recruiter hovers over them */
+    }
 
-        .about-container ul {
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
+    .about-container h2 {
+        color: var(--dark-canvas);
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
 
-        .about-container li {
-            font-size: 1.05rem;
-            margin-bottom: 10px;
-        }
+    .about-container h3 {
+        color: var(--grounding-tone);
+        font-size: 1.3rem;
+        margin: 30px 0 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
 
-        .metrics-inline {
-            display: flex;
-            gap: 20px;
-            margin: 25px 0 35px 0;
-            max-width: 500px; 
-            flex-wrap: wrap; 
-        }
+    .about-container p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: var(--text-dark);
+        line-height: 1.6;           /* Gives your polished copy beautiful breathing room */
+    }
 
-        .metric-mini-card {
-            background: #ffffff;
-            border: 2px solid var(--grounding-tone);
-            padding: 15px;
-            border-radius: 6px;
-            flex: 1;
-            text-align: center;
-            box-shadow: 5px 5px 0px var(--focal-point); 
-            transition: transform 0.2s ease;
-        }
+    .about-container ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
 
-        .metric-mini-card:hover {
-            transform: translate(2px, 2px);
-            box-shadow: 3px 3px 0px var(--focal-point);
-        }
+    .about-container li {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+    }
 
-        .metric-num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--focal-point);
-            margin: 0;
-        }
+    .metrics-inline {
+        display: flex;
+        gap: 20px;
+        margin: 25px 0 35px 0;
+        max-width: 500px; 
+        flex-wrap: wrap; 
+    }
 
-        .metric-lbl {
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: var(--dark-canvas);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .metric-mini-card {
+        background: #ffffff;
+        border: 2px solid var(--grounding-tone);
+        padding: 15px;
+        border-radius: 6px;
+        flex: 1;
+        text-align: center;
+        box-shadow: 5px 5px 0px var(--focal-point); 
+        transition: transform 0.2s ease;
+    }
+
+    .metric-mini-card:hover {
+        transform: translate(2px, 2px);
+        box-shadow: 3px 3px 0px var(--focal-point);
+    }
+
+    .metric-num {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--focal-point);
+        margin: 0;
+    }
+
+    .metric-lbl {
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: var(--dark-canvas);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+        
 
         /* ==========================================================================
            5. DETAILED RESUME EXPERIENCE BLOCK (Dark Canvas)
@@ -485,6 +516,9 @@
                 font-size: 0.75rem;
                 line-height: 1.4;
             }
+            .about-side-crest {
+                display: none !important; 
+            }
         }
     </style>
 </head>
@@ -511,6 +545,10 @@
     </header>
 
     <section class="about-intro-section">
+        <div class="about-side-crest left-crest">
+        <img src="university-seal.png" alt="University of Akron Seal">
+    </div>
+
         <div class="container about-container">
             <h2>About Me</h2>
             <p>Hi, I’m Merlin! I’m a senior marketing student at the University of Akron, specializing in market research and digital strategy. I turn research and raw data into comprehensive, holistic marketing campaigns that elevate brand recognition and build genuine customer connections.</p>
@@ -533,6 +571,10 @@
             <h3>Backed by Data & Strategy</h3>
             <p>Today, I have found my stride within the digital marketing space. Through advanced coursework and hands-on projects, I’ve conducted primary market research utilizing focus groups and eye-tracking technology, while mastering industry-standard tools like Semrush and HubSpot. I’m excited to leverage my unique toolkit and creative storytelling to help brands cut through the noise and find their stride.</p>
         </div>
+
+        <div class="about-side-crest right-crest">
+        <img src="fraternity-crest.png" alt="Phi Gamma Delta Crest">
+    </div>
     </section>
 
     <section class="resume-details-section">
